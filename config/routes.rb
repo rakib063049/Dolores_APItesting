@@ -1,5 +1,15 @@
 KyleCovell::Application.routes.draw do
 
+  resources :clients
+
+  resources :projects
+
+  resources :contacts
+
+  resources :customers
+
+  resources :request_infos
+
   resources :welcome
   root 'welcome#index'
 
