@@ -1,16 +1,14 @@
 KyleCovell::Application.routes.draw do
 
+  devise_for :users
+  resources :users_admin, :controller => 'users'
   resources :clients
-
   resources :projects
-
   resources :contacts
-
   resources :customers
-
   resources :request_infos
-
   resources :welcome
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
