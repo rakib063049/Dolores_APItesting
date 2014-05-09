@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :mobile_phone
       t.string :role
       t.integer :roles_mask
+      t.integer :client_id
 
 
       t.string :encrypted_password, null: false, default: ""

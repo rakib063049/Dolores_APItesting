@@ -8,7 +8,14 @@
         <tr>
           <th>First name</th>
           <th>Last name</th>
+          <th>Title</th>
+          <th>Client</th>
+          <th>Permission</th>
+          <th>Office Phone</th>
+          <th>Mobile Phone</th>
           <th>Email</th>
+          <th>Created On</th>
+          <th>Last Log In</th>
           <th></th>
           <th></th>
           <th></th>
@@ -20,7 +27,14 @@
             <tr>
               <td><%= user.first_name %></td>
               <td><%= user.last_name %></td>
+              <td><%= user.title %></td>
+              <td><%= user.client_id %></td>
+              <td><%= user.roles %></td>
+              <td><%= user.office_phone %></td>
+              <td><%= user.mobile_phone %></td>
               <td><%= user.email %></td>
+              <td><%= user.created_at %></td>
+              <td><%= user.last_sign_in_at %></td>
               <td><%= link_to 'Show', users_admin_path(user) %></td>
               <td><%= link_to 'Edit', edit_users_admin_path(user) %></td>
               <td><%= link_to 'Destroy', users_admin_path(user), method: :delete, data: {confirm: 'Are you sure?'} %></td>

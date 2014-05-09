@@ -44,9 +44,10 @@ class UsersController < ApplicationController
   private
   def set_user
     @user = User.find(params[:id])
+    @user.admin = true if current_user.admin?
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :title, :office_phone, :mobile_phone, :email, :password, :password_confirmation, :roles, :roles_mask)
+    params.require(:user).permit(:first_name, :last_name, :title, :office_phone, :mobile_phone, :email, :password, :password_confirmation, {roles: []}, :roles_mask, :client_id)
   end
 end

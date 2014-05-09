@@ -1,11 +1,18 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  validates :client_id, presence: true
+
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  attr_accessor :admin
 
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
-  ROLES = %w[create_customers create_contacts create_projects]
+  ROLES = %w[admin create_customers create_contacts create_projects]
+  ROLES_WITHOUT_ADMIN = %w[create_customers create_contacts create_projects]
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
@@ -19,7 +26,18 @@ class User < ActiveRecord::Base
     roles.include? role.to_s
   end
 
+  def admin?
+    role?('admin')
+  end
+
   def name
     [self.first_name, self.last_name].join(" ")
   end
+
+  def password_required?
+    return false if admin.present? && !new_record?
+    true
+  end
+
 end
+

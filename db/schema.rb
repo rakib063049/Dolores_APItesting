@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140508174251) do
     t.string   "mobile_phone"
     t.string   "role"
     t.integer  "roles_mask"
+    t.integer  "client_id"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
