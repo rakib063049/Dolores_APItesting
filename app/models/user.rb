@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def role?(role)
     roles.include? role.to_s
   end
+
+  def name
+    [self.first_name, self.last_name].join(" ")
+  end
 end
