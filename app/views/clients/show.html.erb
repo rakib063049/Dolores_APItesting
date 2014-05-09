@@ -52,7 +52,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @client.user_id %>
+  <%= @client.users.collect(&:name) %>
 </p>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

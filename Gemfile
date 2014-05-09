@@ -27,3 +27,5 @@ gem 'twitter-bootstrap-rails',
 
 gem 'devise'
 gem 'cancan'
+gem 'grape'
+gem 'grape-swagger'

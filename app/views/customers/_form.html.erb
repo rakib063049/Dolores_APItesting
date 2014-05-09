@@ -59,6 +59,7 @@
           <%= select :customer, :contact_id, Contact.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select Contact'}, {:class => 'form-control'} %>
         </div>
         <div class="form-actions">
+          <%= f.hidden_field :created_by, value: current_user.id %>
           <%= f.submit %>
         </div>
     <% end %>

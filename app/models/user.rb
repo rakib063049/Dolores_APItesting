@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :customers, foreign_key: :created_by
+  has_many :contacts, foreign_key: :created_by
+  has_many :projects, foreign_key: :created_by
   belongs_to :client
 
   validates :first_name, presence: true

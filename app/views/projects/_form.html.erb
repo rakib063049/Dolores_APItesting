@@ -45,6 +45,7 @@
     <%= f.text_area :notes, :class => "form-control"  %>
   </div>
   <div class="form-actions">
+    <%= f.hidden_field :created_by, value: current_user.id %>
     <%= f.submit %>
   </div>
 <% end %>

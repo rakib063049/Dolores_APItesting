@@ -4,7 +4,7 @@ class WelcomesController < ApplicationController
   end
 
   def dashboard
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def load_state

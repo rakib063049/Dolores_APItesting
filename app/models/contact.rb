@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
-
   has_many :projects
+  belongs_to :user, foreign_key: :created_by
 
   validates :first_name, presence: true
   validates :last_name, presence: true

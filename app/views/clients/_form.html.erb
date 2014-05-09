@@ -54,9 +54,9 @@
           <%= f.text_field :website, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :user_id %>
+          <%= f.label :primary_user %>
           <%= link_to 'Create New', new_users_admin_path, :class => 'btn btn-primary btn-xs' %>
-          <%= select :client, :user_id, User.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select User'}, {:class => 'form-control'} %>
+          <%= select :client, :user_ids, User.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select User'}, {:class => 'form-control'} %>
         </div>
         <div class="actions">
           <%= f.submit %>

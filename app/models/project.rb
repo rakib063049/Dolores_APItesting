@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
-
   belongs_to :customer
   belongs_to :contact
-  
+  belongs_to :user, foreign_key: :created_by
+
   validates :name, presence: true
   validates :number, presence: true
   validates :customer_id, presence: true
