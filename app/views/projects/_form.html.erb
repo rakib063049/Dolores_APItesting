@@ -1,4 +1,7 @@
-<%= form_for(@project) do |f| %>
+<div class="row">
+  <div class="col-lg-4">
+
+  <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,35 +14,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :project_name %><br>
-    <%= f.text_field :project_name %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control"  %>
   </div>
-  <div class="field">
-    <%= f.label :project_number %><br>
-    <%= f.text_field :project_number %>
+  <div class="form-group">
+    <%= f.label :number %>
+    <%= f.text_field :number, :class => "form-control"  %>
   </div>
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.number_field :customer_id %>
+  <div class="form-group">
+    <%= f.label :customer_id %>
+    <%= link_to 'Create New', new_customer_path, :class => 'btn btn-primary btn-xs' %>
+    <%= select :project, :customer_id, Customer.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Customer'}, {:class => 'form-control'} %>
   </div>
-  <div class="field">
-    <%= f.label :contact_id %><br>
-    <%= f.number_field :contact_id %>
+  <div class="form-group">
+    <%= f.label :contact_id %>
+    <%= link_to 'Create New', new_contact_path, :class => 'btn btn-primary btn-xs' %>
+    <%= select :project, :contact_id, Contact.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select Contact'}, {:class => 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
+    <%= f.datetime_select :start_date  %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date %>
+    <%= f.datetime_select :end_date  %>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
+  <div class="form-group">
+    <%= f.label :notes %>
+    <%= f.text_area :notes, :class => "form-control"  %>
   </div>
-  <div class="actions">
+  <div class="form-actions">
     <%= f.submit %>
   </div>
 <% end %>
+  </div>
+</div>

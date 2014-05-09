@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140508174251) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "project_name"
-    t.string   "project_number"
+    t.string   "name"
+    t.string   "number"
     t.integer  "customer_id"
     t.integer  "contact_id"
     t.datetime "start_date"

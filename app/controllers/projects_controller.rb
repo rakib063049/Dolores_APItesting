@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = Project.new(number: Project.uniq_number)
   end
 
   # GET /projects/1/edit
@@ -69,6 +69,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_name, :project_number, :customer_id, :contact_id, :start_date, :end_date, :notes)
+      params.require(:project).permit(:name, :number, :customer_id, :contact_id, :start_date, :end_date, :notes)
     end
 end
