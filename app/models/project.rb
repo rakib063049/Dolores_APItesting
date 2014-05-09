@@ -1,4 +1,8 @@
 class Project < ActiveRecord::Base
+
+  belongs_to :customer
+  belongs_to :contact
+  
   validates :name, presence: true
   validates :number, presence: true
   validates :customer_id, presence: true

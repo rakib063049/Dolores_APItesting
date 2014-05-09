@@ -1,6 +1,10 @@
-class WelcomeController < ApplicationController
+class WelcomesController < ApplicationController
   def index
 
+  end
+
+  def dashboard
+    @projects = Project.all
   end
 
   def load_state
