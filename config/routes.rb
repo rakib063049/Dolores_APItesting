@@ -1,5 +1,6 @@
 KyleCovell::Application.routes.draw do
 
+
   devise_for :users
   resources :users_admin, :controller => 'users'
   resources :clients
@@ -7,6 +8,7 @@ KyleCovell::Application.routes.draw do
   resources :contacts
   resources :customers
   resources :request_infos
+  resources :time_logs
   resources :welcomes do
     collection do
       get 'dashboard'

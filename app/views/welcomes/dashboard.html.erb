@@ -24,8 +24,8 @@
               <td><%= project.name %></td>
               <td><%= project.customer.business_name %></td>
               <td><%= project.contact.name %></td>
-              <td><%= "Total log count" %></td>
-              <td><%= "Downlod Link" %></td>
+              <td><%= project.time_logged %></td>
+              <td><%= link_to "Download Log", time_logs_path(:format => "csv", :project_id => project) %></td>
             </tr>
         <% end %>
         </tbody>

@@ -1,0 +1,33 @@
+<h1>Listing time_logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>User</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @time_logs.each do |time_log| %>
+      <tr>
+        <td><%= time_log.start_at %></td>
+        <td><%= time_log.end_at %></td>
+        <td><%= time_log.user_id %></td>
+        <td><%= time_log.project_id %></td>
+        <td><%= link_to 'Show', time_log %></td>
+        <td><%= link_to 'Edit', edit_time_log_path(time_log) %></td>
+        <td><%= link_to 'Destroy', time_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Time log', new_time_log_path %>

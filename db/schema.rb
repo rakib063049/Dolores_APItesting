@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509170617) do
+ActiveRecord::Schema.define(version: 20140509182943) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(version: 20140509170617) do
   create_table "states", force: true do |t|
     t.integer  "country_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_logs", force: true do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "logged"
+    t.integer  "user_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
