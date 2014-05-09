@@ -66,3 +66,22 @@
 
 </body>
 </html>
+
+<script type="application/javascript">
+    $("#customer_country_id").change(function () {
+        var country = $(this).val();
+        var items = "<option value=>Select State</option>";
+        $.ajax({
+            type: 'GET',
+            dataType: "json",
+            url: "<%= load_state_welcome_index_path %>",
+            data: { country: country},
+            success: function (data) {
+                $.each(data, function (index, item) {
+                    items += "<option value='" + item.id + "'>" + item.name + "</option>";
+                });
+                $("#customer_state_id").html(items);
+            }
+        });
+    });
+</script>

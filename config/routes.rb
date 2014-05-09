@@ -7,7 +7,11 @@ KyleCovell::Application.routes.draw do
   resources :contacts
   resources :customers
   resources :request_infos
-  resources :welcome
+  resources :welcome do
+    collection do
+      get 'load_state'
+    end
+  end
 
   root 'welcome#index'
 
