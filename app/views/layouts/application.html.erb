@@ -27,6 +27,11 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right navbar-user">
       <% if user_signed_in? %>
+          <li><%= link_to "Customer", customers_path %></li>
+          <li><%= link_to "Contact", contacts_path %></li>
+          <li><%= link_to "Project", projects_path %></li>
+          <li><%= link_to "Client", clients_path %></li>
+          <li><%= link_to "User", users_admin_index_path %></li>
           <li class="dropdown user-dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-user"></i> <%= current_user.email %>
