@@ -68,7 +68,7 @@
 </html>
 
 <script type="application/javascript">
-    $("#customer_country_id").change(function () {
+    $("#customer_country_id, #client_country_id").change(function () {
         var country = $(this).val();
         var items = "<option value=>Select State</option>";
         $.ajax({
@@ -81,6 +81,7 @@
                     items += "<option value='" + item.id + "'>" + item.name + "</option>";
                 });
                 $("#customer_state_id").html(items);
+                $("#client_state_id").html(items);
             }
         });
     });
