@@ -1,31 +1,35 @@
-<h1>Listing Users</h1>
+<div class="row">
+  <div class="col-lg-7">
+    <h2>Users</h2>
 
-<table>
-  <thead>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover ">
+        <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
 
-  <tbody>
-  <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', users_admin_path(user) %></td>
-        <td><%= link_to 'Edit', edit_users_admin_path(user) %></td>
-        <td><%= link_to 'Destroy', users_admin_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'Show', users_admin_path(user) %></td>
+              <td><%= link_to 'Edit', edit_users_admin_path(user) %></td>
+              <td><%= link_to 'Destroy', users_admin_path(user), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to 'New User', new_users_admin_path %>
+  </div>
+</div><!-- /.row -->
 
-<br>
-
-<%= link_to 'New user', new_users_admin_path %>
