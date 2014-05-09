@@ -26,3 +26,4 @@ gem 'twitter-bootstrap-rails',
     :branch => "bootstrap3"
 
 gem 'devise'
+gem 'cancan'
