@@ -1,49 +1,63 @@
-<%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="row">
+  <div class="col-lg-4">
 
-      <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for(@contact) do |f| %>
+        <% if @contact.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+              <ul>
+                <% @contact.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :office_phone %>
+          <%= f.text_field :office_phone, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mobile_phone %>
+          <%= f.text_field :mobile_phone, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :contact_method %>
+          <br>
+          <%= f.radio_button :contact_method, 'office_phone', :checked => true %>
+          <%= f.label :contact_method_office_phone, 'Office Phone' %>
+          <br>
+          <%= f.radio_button :contact_method, 'mobile_phone' %>
+          <%= f.label :contact_method_mobile_phone, 'Mobile Phone' %>
+          <br>
+          <%= f.radio_button :contact_method, 'email' %>
+          <%= f.label :contact_method_email, 'E-mail' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :customer_id %>
+          <%= link_to 'Create New', new_customer_path, :class => 'btn btn-primary btn-xs' %>
+          <%= select :contact, :customer_id, Customer.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Customer'}, {:class => 'form-control'} %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :office_phone %><br>
-    <%= f.text_field :office_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_phone %><br>
-    <%= f.text_field :mobile_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_method %><br>
-    <%= f.text_field :contact_method %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.number_field :customer_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
