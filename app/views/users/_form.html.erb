@@ -41,7 +41,7 @@
           <%= f.label :email, "Email Address" %>
           <%= f.text_field :email, :class => "form-control" %>
         </div>
-        <% if @user.new_record? && !current_user.admin? %>
+        <% unless current_user.admin? && !@user.new_record? %>
             <div class="form-group">
               <%= f.label :password %>
               <%= f.password_field :password, :class => "form-control" %>
