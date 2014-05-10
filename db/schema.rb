@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20140509182943) do
   create_table "time_logs", force: true do |t|
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "logged"
+    t.float    "logged"
     t.integer  "user_id"
     t.integer  "project_id"
     t.datetime "created_at"

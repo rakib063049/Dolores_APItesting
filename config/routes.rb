@@ -1,5 +1,5 @@
 KyleCovell::Application.routes.draw do
-
+  mount KyleCovell::API => '/api'
 
   devise_for :users
   resources :users_admin, :controller => 'users'
