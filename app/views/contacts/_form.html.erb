@@ -15,15 +15,15 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :first_name %>
+          <%= f.label :first_name, :class => "required" %>
           <%= f.text_field :first_name, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :last_name %>
+          <%= f.label :last_name, :class => "required" %>
           <%= f.text_field :last_name, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label :email, :class => "required" %>
           <%= f.text_field :email, :class => "form-control" %>
         </div>
         <div class="form-group">
@@ -39,25 +39,31 @@
           <%= f.text_field :mobile_phone, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :contact_method %>
+          <%= f.label :contact_method, :class => "required" %>
           <br>
-          <%= f.radio_button :contact_method, 'office_phone', :checked => true %>
-          <%= f.label :contact_method_office_phone, 'Office Phone' %>
-          <br>
-          <%= f.radio_button :contact_method, 'mobile_phone' %>
-          <%= f.label :contact_method_mobile_phone, 'Mobile Phone' %>
-          <br>
-          <%= f.radio_button :contact_method, 'email' %>
-          <%= f.label :contact_method_email, 'E-mail' %>
+
+          <div class="checkbox-margin">
+            <%= f.radio_button :contact_method, 'office_phone', :checked => true %>
+            <%= f.label :contact_method_office_phone, 'Office Phone' %>
+            <br>
+            <%= f.radio_button :contact_method, 'mobile_phone' %>
+            <%= f.label :contact_method_mobile_phone, 'Mobile Phone' %>
+            <br>
+            <%= f.radio_button :contact_method, 'email' %>
+            <%= f.label :contact_method_email, 'E-mail' %>
+          </div>
         </div>
         <div class="form-group">
-          <%= f.label :customer_id %>
+          <%= f.label :customer_id, :class => "required" %>
           <%= link_to 'Create New', new_customer_path, :class => 'btn btn-primary btn-xs' %>
           <%= select :contact, :customer_id, Customer.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Customer'}, {:class => 'form-control'} %>
         </div>
         <div class="form-actions">
           <%= f.hidden_field :created_by, value: current_user.id %>
           <%= f.submit %>
+        </div>
+        <div class="form-group">
+          <label class="text-danger">*</label> = required field
         </div>
     <% end %>
   </div>

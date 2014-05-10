@@ -3,11 +3,11 @@
 
     <%= form_for @user, url: @user.new_record? ? users_admin_index_path(@user) : users_admin_path(@user) do |f| %>
         <div class="form-group">
-          <%= f.label :first_name %>
+          <%= f.label :first_name, :class => "required" %>
           <%= f.text_field :first_name, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :last_name %>
+          <%= f.label :last_name, :class => "required" %>
           <%= f.text_field :last_name, :class => "form-control" %>
         </div>
         <div class="form-group">
@@ -15,7 +15,7 @@
           <%= f.text_field :title, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :client_id %>
+          <%= f.label :client_id, :class => "required" %>
           <%= link_to 'Create New', new_contact_path, :class => 'btn btn-primary btn-xs' %>
           <%= select :user, :client_id, Client.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Client'}, {:class => 'form-control'} %>
         </div>
@@ -38,21 +38,24 @@
           <%= f.text_field :mobile_phone, :class => "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :email, "Email Address" %>
+          <%= f.label :email, "Email Address", :class => "required" %>
           <%= f.text_field :email, :class => "form-control" %>
         </div>
         <% unless current_user.admin? && !@user.new_record? %>
             <div class="form-group">
-              <%= f.label :password %>
+              <%= f.label :password, :class => "required" %>
               <%= f.password_field :password, :class => "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :password_confirmation, "Confirm Password" %>
+              <%= f.label :password_confirmation, "Confirm Password", :class => "required" %>
               <%= f.password_field :password_confirmation, :class => "form-control" %>
             </div>
         <% end %>
         <div class="form-actions">
           <%= f.submit %>
+        </div>
+        <div class="form-group">
+          <label class="text-danger">*</label> = required field
         </div>
     <% end %>
   </div>
