@@ -10,4 +10,11 @@ module ApplicationHelper
     return format("%02d:%02d:%02d", hours, minutes, seconds)
   end
 
+  def country(id)
+    Country.find(id).name rescue ""
+  end
+
+  def state(id)
+    State.find(id).name rescue ""
+  end
 end

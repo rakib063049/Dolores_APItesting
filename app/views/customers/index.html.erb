@@ -32,8 +32,8 @@
               <td><%= customer.suit_unit %></td>
               <td><%= customer.city %></td>
               <td><%= customer.zip_code %></td>
-              <td><%= customer.country_id %></td>
-              <td><%= customer.state_id %></td>
+              <td><%= country(customer.country_id) %></td>
+              <td><%= state(customer.state_id) %></td>
               <td><%= customer.phone %></td>
               <td><%= customer.website %></td>
               <td><%= customer.contacts.collect(&:name) %></td>
