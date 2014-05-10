@@ -4,27 +4,9 @@ module KyleCovell
   class API < Grape::API
     version 'v1', :using => :path, :vendor => 'kyle_covell', :format => :json
     helpers do
-      def warden
-        env['warden']
-      end
-
-      def authenticated
-        if warden.authenticated?
-          return true
-        else
-          error!('Unauthorized', 401)
-        end
-      end
-
       def current_user
-        if warden.user
-          warden.user
-        else
-          user = User.where(:email => params[:email]).first
-          if user && (user.valid_password?(params[:password]) || user.valid_encrypted_password?(params[:password]))
-            return user
-          end
-        end
+        return false unless params[:auth_token]
+        @current_user ||= User.where(authentication_token: params[:auth_token]).first
       end
 
       def authenticate!
@@ -33,10 +15,7 @@ module KyleCovell
     end
 
     before do
-      @email = params[:email]
-      @password = params[:password]
-
-      authenticate!
+      authenticate! unless ['/users/authenticate'].any? { |w| request.path_info =~ /#{w}/ }
     end
 
     resources :users do

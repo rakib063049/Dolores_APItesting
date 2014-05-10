@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :admin
 
+  before_create :set_authentication_token
+
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
   ROLES = %w[admin create_customers create_contacts create_projects]
@@ -42,6 +44,13 @@ class User < ActiveRecord::Base
   def password_required?
     return false if admin.present? && !new_record?
     true
+  end
+
+  def set_authentication_token
+    self.authentication_token = loop do
+      token = rand(36**15).to_s(36)
+      break token unless User.exists?(authentication_token: token)
+    end
   end
 
 end
