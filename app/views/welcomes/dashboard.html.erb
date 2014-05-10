@@ -27,7 +27,7 @@
               <td><%= project.number %></td>
               <td><%= project.name %></td>
               <td><%= project.customer.business_name %></td>
-              <td><%= project.contact.name %></td>
+              <td><%= project.contacts.collect(&:name) %></td>
               <td><%= total_time_logged_str(project.time_logged) %></td>
               <td><%= link_to "Download Log", time_logs_path(:format => "csv", :project_ids => project) %></td>
             </tr>

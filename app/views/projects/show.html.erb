@@ -12,12 +12,12 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @project.customer_id %>
+  <%= @project.customer.business_name %>
 </p>
 
 <p>
   <strong>Contact:</strong>
-  <%= @project.contact_id %>
+  <%= @project.contacts.collect(&:name) %>
 </p>
 
 <p>

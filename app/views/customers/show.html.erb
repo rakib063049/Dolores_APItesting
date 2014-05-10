@@ -52,7 +52,7 @@
 
 <p>
   <strong>Contact:</strong>
-  <%= @customer.contact_id %>
+  <%= @customer.contacts.collect(&:name) %>
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

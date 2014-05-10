@@ -1,6 +1,20 @@
 class Client < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :users
 
   validates :business_name, presence: true, uniqueness: true
   validates :phone, presence: true
+
+  attr_accessor :user_ids
+
+  after_save :associate_users
+
+
+  private
+
+  def associate_users
+    users = User.where(id: user_ids)
+    users.each do |user|
+      user.update_column(:client_id, self.id)
+    end
+  end
 end

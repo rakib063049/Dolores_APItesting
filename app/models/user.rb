@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :clients
   has_many :customers, foreign_key: :created_by
   has_many :contacts, foreign_key: :created_by
   has_many :projects, foreign_key: :created_by
   has_many :time_logs
+  belongs_to :client
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
-  validates :client_id, presence: true
-
+  #validates :client_id, presence: true
+  validate :validate_client
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :admin
@@ -51,6 +51,11 @@ class User < ActiveRecord::Base
       token = rand(36**15).to_s(36)
       break token unless User.exists?(authentication_token: token)
     end
+  end
+
+  private
+  def validate_client
+    self.errors.add(:base, "Failed! Can not change client.") if !new_record? && client_id_changed?
   end
 
 end

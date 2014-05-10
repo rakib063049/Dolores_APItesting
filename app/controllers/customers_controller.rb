@@ -27,7 +27,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
-      if @customer.save
+      if @customer.save!
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else
@@ -62,13 +62,13 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:business_name, :billing_address, :street_address, :suit_unit, :city, :zip_code, :country_id, :state_id, :phone, :website, :contact_id, :created_by)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def customer_params
+    params.require(:customer).permit(:business_name, :billing_address, :street_address, :suit_unit, :city, :zip_code, :country_id, :state_id, :phone, :website, {contact_ids: []}, :created_by)
+  end
 end

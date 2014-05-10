@@ -23,8 +23,8 @@
             <tr>
               <td><%= project.name %></td>
               <td><%= project.number %></td>
-              <td><%= project.customer_id %></td>
-              <td><%= project.contact_id %></td>
+              <td><%= project.customer.business_name %></td>
+              <td><%= project.contacts.collect(&:name) %></td>
               <td><%= project.start_date %></td>
               <td><%= project.end_date %></td>
               <td><%= project.notes %></td>

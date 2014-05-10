@@ -1,53 +1,63 @@
 <div class="row">
   <div class="col-lg-4">
 
-  <%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <%= form_for(@project) do |f| %>
+        <% if @project.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :number %>
-    <%= f.text_field :number, :class => "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :customer_id %>
-    <%= link_to 'Create New', new_customer_path, :class => 'btn btn-primary btn-xs' %>
-    <%= select :project, :customer_id, Customer.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Customer'}, {:class => 'form-control'} %>
-  </div>
-  <div class="form-group">
-    <%= f.label :contact_id %>
-    <%= link_to 'Create New', new_contact_path, :class => 'btn btn-primary btn-xs' %>
-    <%= select :project, :contact_id, Contact.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select Contact'}, {:class => 'form-control'} %>
-  </div>
-  <div class="form-group">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :notes %>
-    <%= f.text_area :notes, :class => "form-control"  %>
-  </div>
-  <div class="form-actions">
-    <%= f.hidden_field :created_by, value: current_user.id %>
-    <%= f.submit %>
-  </div>
-<% end %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :number %>
+          <%= f.text_field :number, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :customer_id %>
+          <%= link_to 'Create New', new_customer_path, :class => 'btn btn-primary btn-xs' %>
+          <%= select :project, :customer_id, Customer.all.collect { |c| [c.business_name, c.id] }, {:prompt => 'Select Customer'}, {:class => 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :contact_id %>
+          <%= link_to 'Create New', new_contact_path, :class => 'btn btn-primary btn-xs' %>
+          <%#= select :project, :contact_ids, Contact.all.collect { |c| [c.name, c.id] }, {:prompt => 'Select Contact'}, {:class => 'form-control'} %>
+          <div id="contact-element">
+            <% for contact in Contact.all %>
+                <div class="checkbox-margin">
+                  <%= check_box_tag "project[contact_ids][]", contact.id, @project.contacts.include?(contact) %>
+                  <%= contact.name %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :start_date %>
+          <br>
+          <%= f.datetime_select :start_date %>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_date %>
+          <br>
+          <%= f.datetime_select :end_date %>
+        </div>
+        <div class="form-group">
+          <%= f.label :notes %>
+          <%= f.text_area :notes, :class => "form-control" %>
+        </div>
+        <div class="form-actions">
+          <%= f.hidden_field :created_by, value: current_user.id %>
+          <%= f.submit %>
+        </div>
+    <% end %>
   </div>
 </div>

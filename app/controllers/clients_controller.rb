@@ -27,7 +27,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
 
     respond_to do |format|
-      if @client.save
+      if @client.save!
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render action: 'show', status: :created, location: @client }
       else
@@ -62,13 +62,13 @@ class ClientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def client_params
-      params.require(:client).permit(:business_name, :billing_address, :street_address, :suit_unit, :city, :zip_code, :country_id, :state_id, :phone, :website, :user_ids)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def client_params
+    params.require(:client).permit(:business_name, :billing_address, :street_address, :suit_unit, :city, :zip_code, :country_id, :state_id, :phone, :website, {user_ids: []})
+  end
 end

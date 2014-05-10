@@ -90,4 +90,22 @@
             }
         });
     });
+
+    $("#project_customer_id").change(function () {
+        var customer = $(this).val();
+        var items = "";
+        $.ajax({
+            type: 'GET',
+            dataType: "json",
+            url: "<%= load_contact_welcomes_path %>",
+            data: { customer: customer},
+            success: function (data) {
+                $.each(data, function (index, item) {
+                    items += "<div class=checkbox-margin><input id=project_contact_ids_ name=project[contact_ids][] type=checkbox value='" + item.id + "'>" + item.name + "</div>"
+                });
+                $("#contact-element").html(items);
+            }
+        });
+    });
 </script>
+

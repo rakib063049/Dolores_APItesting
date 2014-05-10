@@ -36,6 +36,7 @@ class UsersController < ApplicationController
         format.html { redirect_to users_admin_path(@user), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
+        flash.now[:error] = @user.errors.full_messages
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

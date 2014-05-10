@@ -13,6 +13,7 @@ KyleCovell::Application.routes.draw do
     collection do
       get 'dashboard'
       get 'load_state'
+      get 'load_contact'
     end
   end
   root 'welcomes#index'

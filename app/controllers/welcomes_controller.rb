@@ -14,4 +14,12 @@ class WelcomesController < ApplicationController
     end
     render json: result
   end
+
+  def load_contact
+    @contacts = Contact.by_customer(params[:customer])
+    result = @contacts.collect do |contact|
+      {id: contact.id, name: contact.name}
+    end
+    render json: result
+  end
 end
