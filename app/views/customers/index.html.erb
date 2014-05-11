@@ -39,13 +39,15 @@
               <td><%= link_to_contact(customer.contacts) %></td>
               <td><%= link_to 'Show', customer %></td>
               <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-              <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Destroy', customer, method: :delete, data: {confirm: 'Are you sure?'} %></td>
             </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-    <%= link_to 'New Customer', new_customer_path %>
+    <%= link_to 'Create Customer', new_customer_path, :class => "btn btn-default" %>
+    <%= link_to 'Create Contact', new_contact_path, :class => "btn btn-default" %>
+    <%= link_to 'Create Project', new_project_path, :class => "btn btn-default" %>
   </div>
 </div><!-- /.row -->
 
