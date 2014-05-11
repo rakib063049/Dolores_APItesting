@@ -28,13 +28,13 @@
               <td><%= user.first_name %></td>
               <td><%= user.last_name %></td>
               <td><%= user.title %></td>
-              <td><%= user.client_id %></td>
+              <td><%= user.client.business_name %></td>
               <td><%= user.roles %></td>
               <td><%= user.office_phone %></td>
               <td><%= user.mobile_phone %></td>
               <td><%= user.email %></td>
-              <td><%= user.created_at %></td>
-              <td><%= user.last_sign_in_at %></td>
+              <td><%= formated_date(user.created_at) %></td>
+              <td><%= formated_date(user.last_sign_in_at) %></td>
               <td><%= link_to 'Show', users_admin_path(user) %></td>
               <td><%= link_to 'Edit', edit_users_admin_path(user) %></td>
               <td><%= link_to 'Destroy', users_admin_path(user), method: :delete, data: {confirm: 'Are you sure?'} %></td>
