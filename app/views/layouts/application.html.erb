@@ -34,6 +34,7 @@
           <% if current_user.admin? %>
               <li><%= link_to "Client", clients_path %></li>
               <li><%= link_to "User", users_admin_index_path %></li>
+              <li><%= link_to "Requested Info", request_infos_path %></li>
           <% end %>
           <li class="dropdown user-dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
