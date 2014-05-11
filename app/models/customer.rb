@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
 
   validates :business_name, presence: true, uniqueness: true
   validates :phone, presence: true
+  validates :zip_code, numericality: true, :allow_blank => true
 
   attr_accessor :contact_ids
 
