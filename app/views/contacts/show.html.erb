@@ -37,7 +37,7 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @contact.customer.business_name %>
+  <%= @contact.try(:customer).try(:business_name) %>
 </p>
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
