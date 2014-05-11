@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
   #validates :contact_id, presence: true
   validate :validate_customer
 
+  scope :by_customer, ->(customer_id) { where(customer_id: customer_id) }
+  
   def time_logged
     time_logs.sum(:logged)
   end

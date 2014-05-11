@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :customers, foreign_key: :created_by
-  has_many :contacts, foreign_key: :created_by
-  has_many :projects, foreign_key: :created_by
   has_many :time_logs
   belongs_to :client
 
@@ -51,6 +48,18 @@ class User < ActiveRecord::Base
       token = rand(36**15).to_s(36)
       break token unless User.exists?(authentication_token: token)
     end
+  end
+
+  def customers
+    Customer.by_client(self.client_id)
+  end
+
+  def contacts
+    Contact.by_customer(customers.collect(&:id))
+  end
+
+  def projects
+    Project.by_customer(customers.collect(&:id))
   end
 
   private

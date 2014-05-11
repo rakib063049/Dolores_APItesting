@@ -9,8 +9,10 @@ class Customer < ActiveRecord::Base
 
   attr_accessor :contact_ids
 
+  before_save :associate_client
   after_save :associate_contacts
 
+  scope :by_client, ->(client_id) { where(client_id: client_id) }
 
   private
 
@@ -19,5 +21,9 @@ class Customer < ActiveRecord::Base
     contacts.each do |contact|
       contact.update_column(:customer_id, self.id)
     end
+  end
+
+  def associate_client
+    self.client_id = self.user.client_id
   end
 end

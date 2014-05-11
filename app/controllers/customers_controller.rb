@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    if current_user.admin?
+      @customers = Customer.all
+    else
+      @customers = current_user.customers
+    end
   end
 
   # GET /customers/1
