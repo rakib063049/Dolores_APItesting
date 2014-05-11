@@ -24,7 +24,7 @@
               <td><%= project.name %></td>
               <td><%= project.number %></td>
               <td><%= project.customer.business_name %></td>
-              <td><%= project.contacts.collect(&:name) %></td>
+              <td><%= link_to_contact(project.contacts) %></td>
               <td><%= project.start_date %></td>
               <td><%= project.end_date %></td>
               <td><%= project.notes %></td>

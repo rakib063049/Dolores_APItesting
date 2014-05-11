@@ -18,4 +18,22 @@ module ApplicationHelper
   def state(id)
     State.find(id).name rescue ""
   end
+
+  def link_to_contact(contacts)
+    items = ""
+    contacts.collect do |contact|
+      items += link_to(contact.name, contact_path(contact), :class => 'text-info', :target => '_blank')
+      items += "<br>"
+    end
+    return items.html_safe
+  end
+
+  def link_to_user(users)
+    items = ""
+    users.collect do |user|
+      items += link_to(user.name, users_admin_path(user), :class => 'text-info', :target => '_blank')
+      items += "<br>"
+    end
+    return items.html_safe
+  end
 end
