@@ -4,7 +4,11 @@ class WelcomesController < ApplicationController
   end
 
   def dashboard
-    @projects = current_user.projects.order('created_at DESC')
+    if current_user.admin?
+      @projects = Project.all
+    else
+      @projects = current_user.projects.order('created_at DESC')
+    end
   end
 
   def load_state
