@@ -24,7 +24,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails',
     :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
     :branch => "bootstrap3"
-
+gem 'bootstrap-datetimepicker-rails'
 gem 'devise'
 gem 'cancan'
 gem 'grape'
