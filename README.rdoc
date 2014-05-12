@@ -10,3 +10,19 @@
        Method: Post
        URL:  http://localhost:3000/api/v1/time_logs.json?auth_token=your_auth_token
        Parameters: user_id: user_id, project_id: project_id, start_at:2014-05-10 12:37:14 +0600, end_at:  2014-05-10 12:37:14 +0600
+
+ iii) Return all customers
+      Method: Post
+      URL: http://localhost:3000/api/v1/customers.json?auth_token=your_auth_token
+
+ iv) Return all projects
+       Method: Post
+       URL: http://localhost:3000/api/v1/projects.json?auth_token=your_auth_token
+
+ iv) Return all projects
+        Method: Post
+        URL: http://localhost:3000/api/v1/projects.json?auth_token=your_auth_token
+
+ v) Return all projects
+         Method: Post
+         URL: http://localhost:3000/api/v1/time_logs.json?auth_token=your_auth_token

@@ -39,7 +39,7 @@ module KyleCovell
 
       desc "Return all time logs."
       get do
-        TimeLog.all
+        current_user.time_log_records
       end
 
       desc "It will create time logs for corresponding user and project"
@@ -61,6 +61,24 @@ module KyleCovell
         else
           {:id => nil, :status => false, :message => "Can not create Time log.", :errors => errors}
         end
+      end
+
+    end
+
+    resource :customers do
+
+      desc "Return all Customers."
+      get do
+        current_user.customers.as_json
+      end
+
+    end
+
+    resource :projects do
+
+      desc "Return all Projects."
+      get do
+        current_user.projects.as_json
       end
 
     end
