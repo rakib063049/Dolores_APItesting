@@ -28,7 +28,7 @@
               <td><%= user.first_name %></td>
               <td><%= user.last_name %></td>
               <td><%= user.title %></td>
-              <td><%= user.client.business_name %></td>
+              <td><%= user.try(:client).try(:business_name) %></td>
               <td><%= user.roles %></td>
               <td><%= user.office_phone %></td>
               <td><%= user.mobile_phone %></td>
