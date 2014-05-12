@@ -1,28 +1,12 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ i)  Authentication
+       Method: Post
+       URL:  http://localhost:3000/api/v1/users/authenticate.json
+       Parameters:     email: your@email.com, password: yourpassword
+       you will get an authentication token form here.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  ii)  Create Time Log
+       Method: Post
+       URL:  http://localhost:3000/api/v1/time_logs.json?auth_token=your_auth_token
+       Parameters: user_id: user_id, project_id: project_id, start_at:2014-05-10 12:37:14 +0600, end_at:  2014-05-10 12:37:14 +0600
