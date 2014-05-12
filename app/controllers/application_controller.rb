@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    dashboard_welcomes_path
+    resource.admin? ? clients_path : dashboard_welcomes_path
   end
 
 end
