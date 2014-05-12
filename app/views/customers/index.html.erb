@@ -17,6 +17,8 @@
           <th>Phone</th>
           <th>Website</th>
           <th>Contact</th>
+          <th>New Contact</th>
+          <th>New Project</th>
           <th></th>
           <th></th>
           <th></th>
@@ -26,7 +28,7 @@
         <tbody>
         <% @customers.each do |customer| %>
             <tr>
-              <td><%= customer.business_name %></td>
+              <td><%= link_to customer.business_name, customer, :class => 'text-info' %></td>
               <td><%= customer.billing_address %></td>
               <td><%= customer.street_address %></td>
               <td><%= customer.suit_unit %></td>
@@ -37,6 +39,8 @@
               <td><%= customer.phone %></td>
               <td><%= customer.website %></td>
               <td><%= link_to_contact(customer.contacts) %></td>
+              <td><%= link_to('Create Contact', new_contact_path(customer_id: customer.id), :class => 'text-info', :target => '_blank') %></td>
+              <td><%= link_to('Create Project', new_project_path(customer_id: customer.id), :class => 'text-info', :target => '_blank') %></td>
               <td><%= link_to 'Show', customer %></td>
               <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
               <td><%= link_to 'Destroy', customer, method: :delete, data: {confirm: 'Are you sure?'} %></td>
@@ -46,8 +50,6 @@
       </table>
     </div>
     <%= link_to 'Create Customer', new_customer_path, :class => "btn btn-default" %>
-    <%= link_to 'Create Contact', new_contact_path, :class => "btn btn-default" %>
-    <%= link_to 'Create Project', new_project_path, :class => "btn btn-default" %>
   </div>
 </div><!-- /.row -->
 

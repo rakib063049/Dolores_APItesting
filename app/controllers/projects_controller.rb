@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new(number: Project.uniq_number)
+    @project.customer_id = params[:customer_id] if params[:customer_id].present?
   end
 
   # GET /projects/1/edit

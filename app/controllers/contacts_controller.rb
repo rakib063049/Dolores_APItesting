@@ -18,7 +18,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @contact = Contact.new
+    @contact = Contact.new()
+    @contact.customer_id = params[:customer_id] if params[:customer_id].present?
   end
 
   # GET /contacts/1/edit
