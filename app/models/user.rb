@@ -62,6 +62,11 @@ class User < ActiveRecord::Base
     Project.by_customer(customers.collect(&:id))
   end
 
+  def time_log_records
+    TimeLog.by_project(projects.collect(&:id))
+  end
+
+
   private
   def validate_client
     self.errors.add(:base, "Failed! Can not change client.") if !new_record? && client_id_changed?

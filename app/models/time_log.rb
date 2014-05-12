@@ -3,7 +3,7 @@ class TimeLog < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_time_logged
-  scope :by_project, ->(ids) { where(project_id: ids) }
+  scope :by_project, ->(project_ids) { where(project_id: project_ids) }
 
   def self.to_csv(project_ids)
     CSV.generate do |csv|
