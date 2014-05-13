@@ -42,13 +42,6 @@ ActiveRecord::Schema.define(version: 20140511194607) do
     t.datetime "updated_at"
   end
 
-  create_table "clients_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "client_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "contacts", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -149,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140511194607) do
     t.string   "mobile_phone"
     t.string   "role"
     t.integer  "roles_mask"
+    t.integer  "client_id"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -160,7 +154,6 @@ ActiveRecord::Schema.define(version: 20140511194607) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "client_id"
     t.string   "authentication_token"
   end
 
