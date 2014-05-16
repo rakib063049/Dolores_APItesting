@@ -28,7 +28,7 @@ class RequestInfosController < ApplicationController
 
     respond_to do |format|
       if @request_info.save
-        format.html { redirect_to @request_info, notice: 'Thank you for your interest, somebody will be in touch soon to.' }
+        format.html { redirect_to @request_info, notice: 'Thank you for your interest, somebody will be in touch soon.' }
         format.json { render action: 'show', status: :created, location: @request_info }
       else
         format.html { render action: 'new' }
