@@ -21,5 +21,12 @@ module KyleCovell
     # config.i18n.default_locale = :de
     config.paths.add "app/api", glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+
+ # KAC adds for Heroku Deployment    
+    # Heroku requires this to be false
+    config.assets.initialize_on_precompile=false
+    
+    
   end
 end
+

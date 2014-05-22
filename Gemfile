@@ -30,3 +30,9 @@ gem 'cancan'
 gem 'grape'
 gem 'grape-swagger'
 gem 'rename'
+
+# KAC adds for Heroku depolyment
+gem "heroku"
+group :production do
+  gem 'thin'
+end
