@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20140513143508) do
   create_table "time_logs", force: true do |t|
     t.datetime "start_at"
     t.datetime "end_at"
+    t.float "idle_time"
     t.float    "logged"
     t.integer  "user_id"
     t.integer  "project_id"
